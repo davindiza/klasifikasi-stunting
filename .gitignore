@@ -1,0 +1,13 @@
+config.py
+
+# Virtual environment
+venv/
+.env/
+ENV/
+env/
+.venv/
+
+# Bytecode files
+_pycache_/
+*.py[cod]
+*$py.class

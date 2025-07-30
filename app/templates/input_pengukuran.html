@@ -1,0 +1,148 @@
+{% extends "layout.html" %} {% block title %}Puskesmas Pagar Merbau - Edit Data
+Anak{% endblock %} {% block content %}
+
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 mb-4 text-gray-800">Tambah Pengukuran Balita</h1>
+
+  <form
+    action="{{ url_for('input_pengukuran', anak_id=anak_id) }}"
+    method="POST"
+  >
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="berat">Berat Badan (Kg)</label>
+            <input
+              type="number"
+              class="form-control"
+              id="berat"
+              name="berat"
+              placeholder="Contoh : 70"
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label for="tinggi">Tinggi Badan (cm)</label>
+            <input
+              type="number"
+              class="form-control"
+              id="tinggi"
+              name="tinggi"
+              placeholder="Contoh : 70"
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label for="lila">LiLA (cm)</label>
+            <input
+              type="number"
+              class="form-control"
+              id="lila"
+              name="lila"
+              placeholder="Contoh : 35"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="lingkar_kepala">Lingkar Kepala (cm)</label>
+            <input
+              type="number"
+              class="form-control"
+              id="lingkar_kepala"
+              name="lingkar_kepala"
+              placeholder="Contoh : 35"
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label for="edema">Pitting Edema Bilateral</label>
+            <select class="form-control border-warning" id="edema" name="edema">
+              <option value="">--Pilih--</option>
+              <option value="Ya">Ya</option>
+              <option value="Tidak">Tidak</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="kelas_ibu"
+            >Ibu/orangtua/wali/keluarga/pengasuh telah mengikuti kelas ibu
+            balita</label
+          >
+          <select
+            class="form-control"
+            id="ikut_kelas_ibu"
+            name="ikut_kelas_ibu"
+          >
+            <option value="">--Pilih--</option>
+            <option value="Ya">Ya</option>
+            <option value="Tidak">Tidak</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Cara Ukur Tinggi Badan</label>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="cara_ukur"
+              id="cara_ukur"
+              value="Berdiri"
+            />
+            <label class="form-check-label" for="cara_ukur">Berdiri</label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="cara_ukur"
+              id="cara_ukur"
+              value="Telentang"
+              checked
+            />
+            <label class="form-check-label" for="cara_ukur">Telentang</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Vitamin A (0)</label>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="vitamin_a"
+              id="vitamin_a"
+              value="Ya"
+            />
+            <label class="form-check-label" for="vitamin_a">Ya</label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="vitamin_a"
+              id="vitamin_a"
+              value="Tidak"
+              checked
+            />
+            <label class="form-check-label" for="vitamin_a">Tidak</label>
+          </div>
+        </div>
+
+        <!-- Tombol Aksi -->
+        <div class="text-right">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Simpan
+          </button>
+          <a href="" class="btn btn-danger"
+            ><i class="fas fa-times"></i> Batal</a
+          >
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

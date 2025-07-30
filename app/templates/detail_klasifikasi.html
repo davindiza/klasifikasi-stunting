@@ -1,0 +1,46 @@
+{% extends "layout.html" %} {% block title %}Puskesmas Pagar Merbau - Edit Data
+Anak{% endblock %} {% block content %}
+
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 mb-4 text-gray-800">Detail Anak</h1>
+
+  <div class="card shadow mb-4">
+    <div
+      class="card-header py-3 d-flex justify-content-between align-items-center"
+    >
+      <h6 class="m-0 font-weight-bold text-primary">Informasi Anak</h6>
+      <a
+        href="{{ url_for('klasifikasi_stunting') }}"
+        class="btn btn-sm btn-secondary"
+      >
+        <i class="fas fa-arrow-left"></i> Kembali
+      </a>
+    </div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-6"><strong>Nama:</strong> Ahmad Setiawan</div>
+        <div class="col-md-6"><strong>Jenis Kelamin:</strong> Laki-laki</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6"><strong>Umur:</strong> 3 tahun 6 bulan</div>
+        <div class="col-md-6"><strong>Tinggi:</strong> 93.2 cm</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6"><strong>Berat:</strong> 12.5 kg</div>
+        <div class="col-md-6">
+          <strong>Status Stunting:</strong>
+          <span class="badge badge-warning text-dark">Pendek</span>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <strong>Status Gizi (BB/U):</strong>
+          <span class="badge badge-success">Normal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

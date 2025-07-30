@@ -1,0 +1,94 @@
+{% extends "layout.html" %} {% block title %}Puskesmas Pagar Merbau - Detail
+Data Anak{% endblock %} {% block content %}
+
+<div class="container-fluid">
+  <h1 class="h3 mb-4 text-gray-800">Detail Data Anak</h1>
+
+  <div class="card shadow mb-4">
+    <div
+      class="card-header py-3 d-flex justify-content-between align-items-center"
+    >
+      <h6 class="m-0 font-weight-bold text-primary">Detail Anak</h6>
+      <div>
+        <a
+          href="{{ url_for('data_pengukuran', anak_id=anak.id) }}"
+          class="btn btn-sm btn-success"
+        >
+          <i class="fas fa-plus"></i> Data Pengukuran
+        </a>
+        <a href="{{ url_for('data_anak') }}" class="btn btn-sm btn-secondary">
+          <i class="fas fa-arrow-left"></i> Kembali
+        </a>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <!-- Informasi Anak -->
+      <div class="row mb-3">
+        <div class="col-md-4"><strong>Nama Anak:</strong> {{ anak.nama }}</div>
+        <div class="col-md-4">
+          <strong>Jenis Kelamin:</strong> {{ anak.jk }}
+        </div>
+        <div class="col-md-4">
+          <strong>Tanggal Lahir:</strong> {{ anak.tgl_lahir.strftime('%d %B %Y')
+          }}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <strong>BB Lahir:</strong> {{ anak.bb_lahir }} kg
+        </div>
+        <div class="col-md-4">
+          <strong>TB Lahir:</strong> {{ anak.tb_lahir }} cm
+        </div>
+        <div class="col-md-4">
+          <strong>Nama Orang Tua:</strong> {{ anak.nama_ortu }}
+        </div>
+      </div>
+
+      <hr />
+      <!-- Alamat -->
+      <h6 class="text-primary">Alamat & Lokasi</h6>
+      <div class="row mb-3">
+        <div class="col-md-4"><strong>Provinsi:</strong> {{ anak.prov }}</div>
+        <div class="col-md-4">
+          <strong>Kab/Kota:</strong> {{ anak.kab_kota }}
+        </div>
+        <div class="col-md-4">
+          <strong>Kecamatan:</strong> {{ anak.kecamatan }}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <strong>Puskesmas:</strong> {{ anak.puskesmas }}
+        </div>
+        <div class="col-md-4">
+          <strong>Desa/Kelurahan:</strong> {{ anak.desa }}
+        </div>
+        <div class="col-md-4">
+          <strong>Posyandu:</strong> {{ anak.posyandu }}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-4"><strong>RT:</strong> {{ anak.rt }}</div>
+        <div class="col-md-4"><strong>RW:</strong> {{ anak.rw }}</div>
+        <div class="col-md-4">
+          <strong>Alamat Lengkap:</strong> {{ anak.alamat }}
+        </div>
+      </div>
+
+      <hr />
+    </div>
+
+    <!-- Optional Footer -->
+    <footer class="sticky-footer bg-white">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <span>Copyright &copy; Puskesmas Pagar Merbau 2025</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+{% endblock %}

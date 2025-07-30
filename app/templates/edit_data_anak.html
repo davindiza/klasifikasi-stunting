@@ -1,0 +1,278 @@
+{% extends "layout.html" %} {% block title %}Puskesmas Pagar Merbau - Edit Data
+Anak{% endblock %} {% block content %}
+
+<div class="card shadow mb-4">
+  <div
+    class="card-header py-3 d-flex justify-content-between align-items-center"
+  >
+    <h6 class="m-0 font-weight-bold text-primary">Edit Data Anak</h6>
+    <a href="{{ url_for('data_anak') }}" class="btn btn-sm btn-secondary">
+      <i class="fas fa-arrow-left"></i> Kembali
+    </a>
+  </div>
+  <div class="row justify-content-center mb-4">
+    <div class="col-8 bg-white p-5 rounded">
+      <form method="POST">
+        <div class="mb-3">
+          <label for="nik" class="form-label">NIK</label>
+          <input
+            type="number"
+            class="form-control"
+            id="nik"
+            name="nik"
+            value="{{ anak.nik }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="nama" class="form-label">Nama</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nama"
+            name="nama"
+            value="{{ anak.nama }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="jk" class="form-label">JK</label>
+          <input
+            type="text"
+            class="form-control"
+            id="jk"
+            name="jk"
+            value="{{ anak.jk }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="tgl_lahir" class="form-label">Tanggal Lahir</label>
+          <input
+            type="date"
+            class="form-control"
+            id="tgl_lahir"
+            name="tgl_lahir"
+            value="{{ anak.tgl_lahir }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="bb_lahir" class="form-label">BB Lahir</label>
+          <input
+            type="number"
+            class="form-control"
+            id="bb_lahir"
+            name="bb_lahir"
+            value="{{ anak.bb_lahir }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="tblahir" class="form-label">TB Lahir</label>
+          <input
+            type="number"
+            class="form-control"
+            id="tb_lahir"
+            name="tb_lahir"
+            value="{{ anak.tb_lahir }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="nama_ortu" class="form-label">Nama Ortu</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nama_ortu"
+            name="nama_ortu"
+            value="{{ anak.nama_ortu }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="prov" class="form-label">Prov</label>
+          <input
+            type="text"
+            class="form-control"
+            id="prov"
+            name="prov"
+            value="{{ anak.prov }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="kab_kota" class="form-label">Kab/Kota</label>
+          <input
+            type="text"
+            class="form-control"
+            id="kab_kota"
+            name="kab_kota"
+            value="{{ anak.kab_kota }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="kecamatan" class="form-label">Kecamatan</label>
+          <input
+            type="text"
+            class="form-control"
+            id="kecamatan"
+            name="kecamatan"
+            value="{{ anak.kecamatan }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="puskesmas" class="form-label">Puskesmas</label>
+          <input
+            type="text"
+            class="form-control"
+            id="puskesmas"
+            name="puskesmas"
+            value="{{ anak.puskesmas }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="desa" class="form-label">Desa/Kelurahan</label>
+          <input
+            type="text"
+            class="form-control"
+            id="desa"
+            name="desa"
+            value="{{ anak.desa }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="posyandu" class="form-label">Posyandu</label>
+          <input
+            type="text"
+            class="form-control"
+            id="posyandu"
+            name="posyandu"
+            value="{{ anak.posyandu }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="rt" class="form-label">RT</label>
+          <input
+            type="number"
+            class="form-control"
+            id="rt"
+            name="rt"
+            value="{{ anak.rt }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="rw" class="form-label">RW</label>
+          <input
+            type="number"
+            class="form-control"
+            id="rw"
+            name="rw"
+            value="{{ anak.rw }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="alamat" class="form-label">Alamat</label>
+          <input
+            type="text"
+            class="form-control"
+            id="alamat"
+            name="alamat"
+            value="{{ anak.alamat }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="usia_ukur" class="form-label">Usia Saat Ukur</label>
+          <input
+            type="number"
+            class="form-control"
+            id="usia_ukur"
+            name="usia_ukur"
+            value="{{ anak.usia_ukur }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="tanggalpengukuran" class="form-label"
+            >Tanggal Pengukuran</label
+          >
+          <input
+            type="date"
+            class="form-control"
+            id="tanggalpengukuran"
+            name="tanggalpengukuran"
+            value="{{ anak.created_at }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="berat" class="form-label">Berat</label>
+          <input
+            type="number"
+            class="form-control"
+            id="berat"
+            name="berat"
+            value="{{ anak.berat }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="tinggi" class="form-label">Tinggi</label>
+          <input
+            type="number"
+            class="form-control"
+            id="tinggi"
+            name="tinggi"
+            value="{{anak.tinggi}}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="lila" class="form-label">LiLA</label>
+          <input
+            type="number"
+            class="form-control"
+            id="lila"
+            name="lila"
+            value="{{ anak.lila}}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="bb_u" class="form-label">BB/U</label>
+          <input
+            type="number"
+            class="form-control"
+            id="bb_u"
+            name="bb_u"
+            value="{{anak.bb_u}}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="tb_u" class="form-label">TB/U</label>
+          <input
+            type="number"
+            class="form-control"
+            id="tb_u"
+            name="tb_u"
+            value="{{anak.tb_u}}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="bb_tb" class="form-label">BB/TB</label>
+          <input
+            type="number"
+            class="form-control"
+            id="bb_tb"
+            name="bb_tb"
+            value="{{anak.bb_tb}}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="naik_berat_badan" class="form-label"
+            >Naik Berat Badan</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="naik_berat_badan"
+            name="naik_berat_badan"
+            value="{{ anak.naik_berat_badan }}"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- /.container-fluid -->
+</div>
+
+{% endblock %}
