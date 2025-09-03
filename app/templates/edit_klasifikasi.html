@@ -2,57 +2,80 @@
 Anak{% endblock %} {% block content %}
 
 <div class="card shadow mb-4">
-              <div
-                class="card-header py-3 d-flex justify-content-between align-items-center"
-              >
-                <h6 class="m-0 font-weight-bold text-primary">Edit Data Anak</h6>
-                <a href="{{ url_for('klasifikasi_stunting') }}" class="btn btn-sm btn-secondary">
-                  <i class="fas fa-arrow-left"></i> Kembali
-                </a>
-              </div>
-          <div class="row justify-content-center mb-4">
-            <div class="col-8 bg-white p-5 rounded">
-              <form>
-                <div class="mb-3">
-                  <label for="nama" class="form-label">Nama</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="nama"
-                    name="nama"
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="jeniskelamin" class="form-label">JenisKelamin</label>
-                  <input type="text" class="form-control" id="jk" name="jk" />
-                </div>
-                <div class="mb-3">
-                  <label for="umur" class="form-label">Umur</label>
-                  <input type="text" class="form-control" id="umur" name="umur" />
-                </div>
-                <div class="mb-3">
-                  <label for="berat" class="form-label">Berat</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="berat"
-                    name="berat"
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="tinggi" class="form-label">Tinggi</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="tinggi"
-                    name="tinggi"
-                  />
-                <button type="submit" class="btn btn-primary" href="klasifikasi-stunting.html">Submit</button>
-              </form>
-            </div>
-          </div>
-
-          <!-- /.container-fluid -->
+  <div
+    class="card-header py-3 d-flex justify-content-between align-items-center"
+  >
+    <h6 class="m-0 font-weight-bold text-primary">Edit Data Anak</h6>
+    <a
+      href="{{ url_for('klasifikasi_stunting') }}"
+      class="btn btn-sm btn-secondary"
+    >
+      <i class="fas fa-arrow-left"></i> Kembali
+    </a>
+  </div>
+  <div class="row justify-content-center mb-4">
+    <div class="col-8 bg-white p-5 rounded">
+      <form method="POST">
+        <div class="mb-3">
+          <label for="nama" class="form-label">Nama</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nama"
+            name="nama"
+            value="{{ klasifikasi.nama }}"
+          />
         </div>
+        <div class="mb-3">
+          <label for="jeniskelamin" class="form-label">Jenis Kelamin</label>
+          <select
+            name="jeniskelamin"
+            id="jeniskelamin"
+            value="{{ klasifikasi.jk }}"
+          >
+            <option value="">Jenis Kelamin</option>
+            <option value="L">Lak-laki</option>
+            <option value="P">Perempuan</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="umur" class="form-label">Umur (Bulan)</label>
+          <input
+            type="number"
+            class="form-control"
+            id="umur"
+            name="umur"
+            value="{{ klasifikasi.umur }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="berat" class="form-label">Berat (Kg)</label>
+          <input
+            type="number"
+            step="0.01"
+            class="form-control"
+            id="berat"
+            name="berat"
+            value="{{ klasifikasi.berat }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="tinggi" class="form-label">Tinggi (Cm)</label>
+          <input
+            type="number"
+            step="0.01"
+            class="form-control"
+            id="tinggi"
+            name="tinggi"
+            value="{{ klasifikasi.tinggi }}"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- /.container-fluid -->
+</div>
 
 {% endblock %}

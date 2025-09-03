@@ -2,14 +2,46 @@
 {% block content %}
 <h1 class="h3 mb-4 text-gray-800">Data Anak</h1>
 
+<div
+  aria-live="polite"
+  aria-atomic="true"
+  style="position: fixed; top: 1rem; right: 1rem; z-index: 2000"
+>
+  {% with messages = get_flashed_messages(with_categories=true) %} {% if
+  messages %} {% for category, message in messages %}
+  <div
+    class="toast align-items-center text-bg-{{ 'success' if category == 'success' else 'danger' }} border-0 show"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="d-flex">
+      <div class="toast-body">{{ message }}</div>
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+  </div>
+  {% endfor %} {% endif %} {% endwith %}
+</div>
+
 <!-- Content Row -->
 <div class="row">
   <div class="col-12 justify-content-center">
     <div class="card shadow mb-4">
       <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        <h6 class="m-0 font-weight-bold text-primary"></h6>
       </div>
+
       <div class="card-body">
+        <div class="mt-10">
+          <form
+            class="d-none d-sm-inline-block form-inline mr-auto md-3 my-2 my-md-0 mw-100 navbar-search"
+          ></form>
+        </div>
         <div class="table-responsive">
           <table
             class="table table-bordered"
@@ -23,8 +55,8 @@
                 <th>Name</th>
                 <th>Jenis Kelamin</th>
                 <th>Tanggal Lahir</th>
-                <th>BB Lahir</th>
-                <th>TB Lahir</th>
+                <th>BB Lahir (Kg)</th>
+                <th>TB Lahir (Cm)</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -32,7 +64,7 @@
             <div class="my-2"></div>
             <a
               href="{{ url_for('input_data_anak') }}"
-              class="btn btn-secondary btn-icon-split"
+              class="btn btn-primary btn-icon-split"
             >
               <span class="icon text-white-50">
                 <i class="fas fa-arrow-right"></i>
@@ -42,6 +74,7 @@
 
             <!-- Contoh Data -->
             <tbody>
+              <div class="mt-3"></div>
               {% for anak in anak_list %}
               <tr>
                 <td>{{ anak.nik }}</td>
@@ -58,7 +91,7 @@
                     <i class="fas fa-eye fa-sm"></i>
                   </a>
                   <a
-                    href="{{ url_for('edit_data_anak', anak_id=1) }}"
+                    href="{{ url_for('edit_data_anak', anak_id=anak.id) }}"
                     class="btn btn-warning btn-circle"
                   >
                     <i class="fas fa-pen"></i>
@@ -80,3 +113,13 @@
   </div>
 </div>
 {% endblock %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var toastElList = [].slice.call(document.querySelectorAll(".toast"));
+    toastElList.map(function (toastEl) {
+      var toast = new bootstrap.Toast(toastEl, { delay: 3000 });
+      toast.show();
+    });
+  });
+</script>

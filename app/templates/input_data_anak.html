@@ -42,6 +42,7 @@ Anak{% endblock %} {% block content %}
           <label for="bblahir" class="form-label">BB Lahir</label>
           <input
             type="number"
+            step="0.01"
             class="form-control"
             id="bblahir"
             name="bblahir"
@@ -51,6 +52,7 @@ Anak{% endblock %} {% block content %}
           <label for="tblahir" class="form-label">TB Lahir</label>
           <input
             type="number"
+            step="0.01"
             class="form-control"
             id="tblahir"
             name="tblahir"
@@ -132,11 +134,23 @@ Anak{% endblock %} {% block content %}
         </div>
         <div class="mb-3">
           <label for="berat" class="form-label">Berat</label>
-          <input type="number" class="form-control" id="berat" name="berat" />
+          <input
+            type="number"
+            class="form-control"
+            id="berat"
+            name="berat"
+            step="0.01"
+          />
         </div>
         <div class="mb-3">
           <label for="tinggi" class="form-label">Tinggi</label>
-          <input type="number" class="form-control" id="tinggi" name="tinggi" />
+          <input
+            type="number"
+            class="form-control"
+            id="tinggi"
+            name="tinggi"
+            step="0.01"
+          />
         </div>
         <div class="mb-3">
           <label for="lila" class="form-label">LiLA</label>

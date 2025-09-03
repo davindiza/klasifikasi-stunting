@@ -15,11 +15,11 @@
               Jumlah Anak
             </div>
             <div class="h5 mb-0 font-weight-bold text-gray-800" type="number">
-              300
+              {{ data.total_anak }}
             </div>
           </div>
           <div class="col-auto">
-            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+            <i class="fas fa-child fa-2x text-gray-300"></i>
           </div>
         </div>
       </div>
@@ -38,11 +38,11 @@
               jumlah Anak Normal
             </div>
             <div class="h5 mb-0 font-weight-bold text-gray-800" type="number">
-              200
+              {{ data.total_normal }}
             </div>
           </div>
           <div class="col-auto">
-            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+            <i class="fas fa-plus fa-2x text-gray-300"></i>
           </div>
         </div>
       </div>
@@ -51,11 +51,13 @@
 
   <!-- jumlah anak stunting -->
   <div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-info shadow h-100 py-2">
+    <div class="card border-left-warning shadow h-100 py-2">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+            <div
+              class="text-xs font-weight-bold text-warning text-uppercase mb-1"
+            >
               Jumlah Anak Stunting
             </div>
             <div class="row no-gutters align-items-center">
@@ -64,14 +66,14 @@
                   class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
                   type="number"
                 >
-                  50
+                  {{ data.total_stunting }}
                 </div>
               </div>
               <div class="col"></div>
             </div>
           </div>
           <div class="col-auto">
-            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+            <i class="fas fa-minus fa-2x text-gray-300"></i>
           </div>
         </div>
       </div>
@@ -80,21 +82,21 @@
 
   <!-- Pending Requests Card Example -->
   <div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-warning shadow h-100 py-2">
+    <div class="card border-left-danger shadow h-100 py-2">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div
-              class="text-xs font-weight-bold text-warning text-uppercase mb-1"
+              class="text-xs font-weight-bold text-danger text-uppercase mb-1"
             >
               Jumlah Anak Stunting Parah
             </div>
             <div class="h5 mb-0 font-weight-bold text-gray-800" type="number">
-              50
+              {{ data.total_stunting_parah }}
             </div>
           </div>
           <div class="col-auto">
-            <i class="fas fa-comments fa-2x text-gray-300"></i>
+            <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
           </div>
         </div>
       </div>
@@ -142,17 +144,17 @@
       <!-- Card Body -->
       <div class="card-body">
         <div class="chart-pie pt-4 pb-2">
-          <canvas id="myPieChart"></canvas>
+          <canvas id="totalDataChart"></canvas>
         </div>
         <div class="mt-4 text-center small">
           <span class="mr-2">
-            <i class="fas fa-circle text-primary"></i> Jumlah Anak Normal
+            <i class="fas fa-circle text-success"></i> Jumlah Anak Normal
           </span>
           <span class="mr-2">
-            <i class="fas fa-circle text-success"></i> Jumlah Anak Stunting
+            <i class="fas fa-circle text-warning"></i> Jumlah Anak Stunting
           </span>
           <span class="mr-2">
-            <i class="fas fa-circle text-info"></i> Jumlah Anak Stunting Parah
+            <i class="fas fa-circle text-danger"></i> Jumlah Anak Stunting Parah
           </span>
         </div>
       </div>
@@ -186,4 +188,43 @@
     </div>
   </div>
 </div>
+
+<script>
+  const totalDataChartCtx = document.getElementById("totalDataChart").getContext("2d");
+
+  const flaskData = {{ chart_data|tojson }};
+  const chartData = JSON.parse(flaskData);
+
+  new Chart(totalDataChartCtx, {
+    type: "doughnut",
+    data: {
+      labels: chartData.labels,
+      datasets: [
+        {
+          data: chartData.values,
+          backgroundColor: ["#04e000", "#ffd700", "#dc143c"],
+          hoverBackgroundColor: ["#198754", "#17a673", "#2c9faf"],
+          hoverBorderColor: "rgba(234, 236, 244, 1)",
+        },
+      ],
+    },
+    options: {
+      maintainAspectRatio: false,
+      tooltips: {
+        backgroundColor: "rgb(255,255,255)",
+        bodyFontColor: "#858796",
+        borderColor: "#dddfeb",
+        borderWidth: 1,
+        xPadding: 15,
+        yPadding: 15,
+        displayColors: false,
+        caretPadding: 10,
+      },
+      legend: {
+        display: false,
+      },
+      cutoutPercentage: 80,
+    },
+  });
+</script>
 {% endblock %}

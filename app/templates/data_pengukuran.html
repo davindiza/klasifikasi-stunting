@@ -7,15 +7,19 @@
 <div class="card shadow mb-4">
   <div class="card-body">
     <div class="row">
-      <div class="col-md-6 mb-2"><strong>NIK:</strong> 1212101801226002</div>
+      <div class="col-md-6 mb-2"><strong>NIK:</strong> {{ anak.nik }}</div>
       <div class="col-md-6 mb-2">
-        <strong>Tgl Lahir:</strong> 18 Januari 2022
+        <strong>Tgl Lahir:</strong> {{ anak.tgl_lahir.strftime('%d-%m-%Y') }}
       </div>
-      <div class="col-md-6 mb-2"><strong>Nama:</strong> M.ZEFFANSYAH PURBA</div>
-      <div class="col-md-6 mb-2"><strong>Jenis Keluarga:</strong> Balita</div>
-      <div class="col-md-6 mb-2"><strong>Jenis Kelamin:</strong> Laki-laki</div>
+      <div class="col-md-6 mb-2"><strong>Nama:</strong> {{ anak.nama }}</div>
       <div class="col-md-6 mb-2">
-        <strong>Umur:</strong> 3 Tahun - 6 Bulan - 2 Hari
+        <strong>Jenis Kelamin:</strong> {{ 'Laki-laki' if anak.jk == 'L' else
+        'Perempuan' }}
+      </div>
+      <div class="col-md-6 mb-2">
+        <strong>Umur:</strong>
+        {% if detail_terakhir and detail_terakhir.umur is not none %} {{
+        detail_terakhir.umur }} bulan {% else %} - {% endif %}
       </div>
     </div>
   </div>
@@ -24,7 +28,7 @@
 <!-- Tombol Aksi -->
 <div class="mb-3 d-flex flex-wrap gap-2">
   <a
-    href="{{ url_for('input_pengukuran', anak_id=1) }}"
+    href="{{ url_for('input_pengukuran', anak_id=anak_id) }}"
     class="btn btn-success btn-sm"
     ><i class="fas fa-plus"></i> Tambah Pengukuran</a
   >
@@ -43,8 +47,6 @@
           <th>ZS BB/U</th>
           <th>ZS TB/U</th>
           <th>ZS BB/TB</th>
-          <th>Naik BB</th>
-          <th>Keterangan Naik BB</th>
           <th>LILA</th>
           <th>Lingkar Kepala</th>
           <th>Edema</th>
@@ -53,34 +55,39 @@
         </tr>
       </thead>
       <tbody>
-        {% for pengukuran in pengukuran_list %}
+        {% for pengukuran, detail in pengukuran_list %}
         <tr>
-          <td>{{ pengukuran.created_at }}</td>
+          <td>{{ pengukuran.created_at.strftime('%d-%m-%Y') }}</td>
           <td>{{ pengukuran.berat }}</td>
           <td>{{ pengukuran.tinggi }}</td>
-          <td>{{ pengukuran. cara_ukur }}</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{ pengukuran.cara_ukur }}</td>
+          <td>{{ '%.2f'|format(detail.zs_bb_u) if detail else '-' }}</td>
+          <td>{{ '%.2f'|format(detail.zs_tb_u) if detail else '-' }}</td>
+          <td>{{ '%.2f'|format(detail.zs_bb_tb) if detail else '-' }}</td>
           <td>{{ pengukuran.lila }}</td>
           <td>{{ pengukuran.lingkar_kepala }}</td>
-          <td>{{ pengukuran.edema}}</td>
+          <td>{{ pengukuran.edema }}</td>
           <td>{{ pengukuran.ikut_kelas_ibu }}</td>
           <td class="text-center">
-            <button class="btn btn-info btn-circle">
-              <i class="fas fa-eye fa-sm"></i>
-            </button>
-            <button class="btn btn-warning btn-circle">
+            <a
+              href="{{ url_for('edit_pengukuran', anak_id=pengukuran.id_anak, pengukuran_id=pengukuran.id) }}"
+              class="btn btn-warning btn-circle"
+            >
               <i class="fas fa-pen"></i>
-            </button>
-            <button class="btn btn-danger btn-circle">
-              <i class="fas fa-trash"></i>
-            </button>
+            </a>
+            <form
+              action="{{ url_for('delete_pengukuran', anak_id=anak.id, pengukuran_id=pengukuran.id) }}"
+              method="POST"
+              onsubmit="return confirm('Yakin ingin menghapus data ini?');"
+            >
+              <button type="submit" class="btn btn-circle btn-danger">
+                <i class="fas fa-trash"></i>
+              </button>
+            </form>
           </td>
         </tr>
         {% endfor %}
+
         <!-- Tambahkan baris lainnya jika perlu -->
       </tbody>
     </table>

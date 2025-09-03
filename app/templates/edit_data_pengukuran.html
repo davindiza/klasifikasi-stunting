@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block title %}Puskesmas Pagar Merbau - Edit Data Pengukuran{% endblock %}
+{% block content %}
+
+<div class="card shadow mb-4">
+  <div class="card-header py-3 d-flex justify-content-between align-items-center">
+    <h6 class="m-0 font-weight-bold text-primary">Edit Data Pengukuran Anak</h6>
+    <a href="{{ url_for('detail_anak', anak_id=anak.id) }}" class="btn btn-sm btn-secondary">
+      <i class="fas fa-arrow-left"></i> Kembali
+    </a>
+  </div>
+  <div class="row justify-content-center mb-4">
+    <div class="col-8 bg-white p-5 rounded">
+      <form method="POST">
+        <div class="mb-3">
+          <label for="tinggi" class="form-label">Tinggi (Cm)</label>
+          <input type="number" step="0.01" class="form-control" id="tinggi" name="tinggi"
+            value="{{ pengukuran.tinggi }}" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="berat" class="form-label">Berat (Kg)</label>
+          <input type="number" step="0.01" class="form-control" id="berat" name="berat"
+            value="{{ pengukuran.berat }}" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="lila" class="form-label">Lingkar Lengan Atas (cm)</label>
+          <input type="number" step="0.01" class="form-control" id="lila" name="lila"
+            value="{{ pengukuran.lila }}" />
+        </div>
+
+        <div class="mb-3">
+          <label for="lingkar_kepala" class="form-label">Lingkar Kepala (cm)</label>
+          <input type="number" step="0.01" class="form-control" id="lingkar_kepala" name="lingkar_kepala"
+            value="{{ pengukuran.lingkar_kepala }}" />
+        </div>
+
+        <div class="mb-3">
+          <label for="edema" class="form-label">Edema</label>
+          <select class="form-control" id="edema" name="edema">
+            <option value="Tidak" {% if pengukuran.edema == "Tidak" %}selected{% endif %}>Tidak</option>
+            <option value="Ya" {% if pengukuran.edema == "Ya" %}selected{% endif %}>Ya</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="ikut_kelas_ibu" class="form-label">Ikut Kelas Ibu?</label>
+          <select class="form-control" id="ikut_kelas_ibu" name="ikut_kelas_ibu">
+            <option value="Tidak" {% if pengukuran.ikut_kelas_ibu == "Tidak" %}selected{% endif %}>Tidak</option>
+            <option value="Ya" {% if pengukuran.ikut_kelas_ibu == "Ya" %}selected{% endif %}>Ya</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="cara_ukur" class="form-label">Cara Ukur</label>
+          <input type="text" class="form-control" id="cara_ukur" name="cara_ukur"
+            value="{{ pengukuran.cara_ukur }}" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

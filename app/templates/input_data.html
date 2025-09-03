@@ -1,4 +1,4 @@
-{% extends "layout.html" %} {% block title %}Puskesmas Pagar Merbau - Edit Data
+{% extends "layout.html" %} {% block title %}Puskesmas Pagar Merbau - Input Data
 Anak{% endblock %} {% block content %}
 
 <div class="card shadow mb-4">
@@ -15,31 +15,42 @@ Anak{% endblock %} {% block content %}
   </div>
   <div class="row justify-content-center mb-4">
     <div class="col-8 bg-white p-5 rounded">
-      <form>
+      <form method="POST">
         <div class="mb-3">
           <label for="nama" class="form-label">Nama</label>
           <input type="text" class="form-control" id="nama" name="nama" />
         </div>
         <div class="mb-3">
           <label for="jeniskelamin" class="form-label">Jenis Kelamin</label>
-          <input
-            type="text"
-            class="form-control"
-            id="jeniskelamin"
-            name="jeniskelamin"
-          />
+          <select name="jeniskelamin" id="jeniskelamin">
+            <option value="">Jenis Kelamin</option>
+            <option value="L">Lak-laki</option>
+            <option value="P">Perempuan</option>
+          </select>
         </div>
         <div class="mb-3">
-          <label for="umur" class="form-label">Umur</label>
+          <label for="umur" class="form-label">Umur (Bulan)</label>
           <input type="number" class="form-control" id="umur" name="umur" />
         </div>
         <div class="mb-3">
-          <label for="berat" class="form-label">Berat</label>
-          <input type="number" class="form-control" id="berat" name="berat" />
+          <label for="berat" class="form-label">Berat (Kg)</label>
+          <input
+            type="number"
+            step="0.01"
+            class="form-control"
+            id="berat"
+            name="berat"
+          />
         </div>
         <div class="mb-3">
-          <label for="tinggi" class="form-label">Tinggi</label>
-          <input type="number" class="form-control" id="tinggi" name="tinggi" />
+          <label for="tinggi" class="form-label">Tinggi (Cm)</label>
+          <input
+            type="number"
+            step="0.01"
+            class="form-control"
+            id="tinggi"
+            name="tinggi"
+          />
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>

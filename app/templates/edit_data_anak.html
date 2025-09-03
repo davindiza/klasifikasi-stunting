@@ -35,13 +35,11 @@ Anak{% endblock %} {% block content %}
         </div>
         <div class="mb-3">
           <label for="jk" class="form-label">JK</label>
-          <input
-            type="text"
-            class="form-control"
-            id="jk"
-            name="jk"
-            value="{{ anak.jk }}"
-          />
+          <select name="jk" id="jk" value="{{ anak.jk }}">
+            <option value="">Jenis Kelamin</option>
+            <option value="L">Lak-laki</option>
+            <option value="P">Perempuan</option>
+          </select>
         </div>
         <div class="mb-3">
           <label for="tgl_lahir" class="form-label">Tanggal Lahir</label>
@@ -54,7 +52,7 @@ Anak{% endblock %} {% block content %}
           />
         </div>
         <div class="mb-3">
-          <label for="bb_lahir" class="form-label">BB Lahir</label>
+          <label for="bb_lahir" class="form-label">BB Lahir (Kg)</label>
           <input
             type="number"
             class="form-control"
@@ -64,7 +62,7 @@ Anak{% endblock %} {% block content %}
           />
         </div>
         <div class="mb-3">
-          <label for="tblahir" class="form-label">TB Lahir</label>
+          <label for="tblahir" class="form-label">TB Lahir (Cm)</label>
           <input
             type="number"
             class="form-control"
@@ -196,7 +194,7 @@ Anak{% endblock %} {% block content %}
           />
         </div>
         <div class="mb-3">
-          <label for="berat" class="form-label">Berat</label>
+          <label for="berat" class="form-label">Berat (Kg)</label>
           <input
             type="number"
             class="form-control"
@@ -206,7 +204,7 @@ Anak{% endblock %} {% block content %}
           />
         </div>
         <div class="mb-3">
-          <label for="tinggi" class="form-label">Tinggi</label>
+          <label for="tinggi" class="form-label">Tinggi (Cm)</label>
           <input
             type="number"
             class="form-control"
